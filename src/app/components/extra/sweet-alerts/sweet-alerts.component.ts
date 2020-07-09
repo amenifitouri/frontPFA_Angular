@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
+import swal from "sweetalert2";
 
 
 @Component({
@@ -68,7 +69,23 @@ export class SweetAlertsComponent  {
     }
     // Confirm Button Action
     confirmText(){
-      alertFunctions.confirmText();
+        swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
     }
     // Confirm & Cancel Button
     confirmCancelButton(){

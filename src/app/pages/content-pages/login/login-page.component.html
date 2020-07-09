@@ -1,4 +1,5 @@
 <!--Login Page Starts-->
+<form [formGroup]="loginForm" class="smart-form client-form" (ngSubmit)="onSubmit()">
 <section id="login">
   <div class="container-fluid">
     <div class="row full-height-vh m-0">
@@ -24,12 +25,14 @@
                     Welcome back, please login to your account.
                   </p>
                   <input
-                    type="text"
+                          formControlName="username"
+                          type="text"
                     class="form-control mb-3"
                     placeholder="Username"
                   />
                   <input
-                    type="password"
+                          formControlName="password"
+                          type="password"
                     class="form-control mb-3"
                     placeholder="Password"
                   />
@@ -72,11 +75,7 @@
                     </div>
                     <div class="recover-pass">
                       <button class="btn btn-primary">
-                        <a
-                          [routerLink]="['/pages/login']"
-                          class="text-decoration-none text-white"
-                          >Login</a
-                        >
+                        <a class="text-decoration-none text-white">Login</a>
                       </button>
                     </div>
                   </div>
@@ -105,4 +104,5 @@
     </div>
   </div>
 </section>
+</form>
 <!--Login Page Ends-->

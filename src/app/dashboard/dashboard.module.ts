@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatchHeightModule } from "../shared/directives/match-height.directive";
 
 import { Dashboard1Component } from "./dashboard1/dashboard1.component";
-import { Dashboard2Component } from "./dashboard2/dashboard2.component";
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { Dashboard2Component } from "./dashboard2/dashboard2.component";
     exports: [],
     declarations: [
         Dashboard1Component,
-        Dashboard2Component
     ],
     providers: [],
 })

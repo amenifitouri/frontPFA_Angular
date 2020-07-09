@@ -1,6 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
+import {AuthService} from '../../../shared/auth/auth.service';
+import {first} from 'rxjs/operators';
 
 @Component({
     selector: 'app-login-page',
@@ -8,16 +10,36 @@ import { Router, ActivatedRoute } from "@angular/router";
     styleUrls: ['./login-page.component.scss']
 })
 
-export class LoginPageComponent {
-
-    @ViewChild('f', {static: false}) loginForm: NgForm;
-
+export class LoginPageComponent implements OnInit {
     constructor(private router: Router,
-        private route: ActivatedRoute) { }
+                private route: ActivatedRoute,
+                private authService: AuthService,
+                private formBuilder: FormBuilder,) { }
+    ngOnInit(): void {
+        this.loginForm = this.formBuilder.group({
+            username: ['', Validators.required],
+            password: ['', Validators.required]
+        });
+    }
+    loginForm: FormGroup;
+    password: string;
+    username: string;
+
+    get f() {
+        return this.loginForm.controls; }
 
     // On submit button click
     onSubmit() {
-        this.loginForm.reset();
+        if (this.loginForm.invalid) {
+            return;
+        }
+        this.authService.login(this.f.username.value, this.f.password.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigate(['dashboard/dashboard1']);
+                },
+             );
     }
     // On Forgot password link click
     onForgotPassword() {
@@ -27,4 +49,6 @@ export class LoginPageComponent {
     onRegister() {
         this.router.navigate(['register'], { relativeTo: this.route.parent });
     }
+
+
 }

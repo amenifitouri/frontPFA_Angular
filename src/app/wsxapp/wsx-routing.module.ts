@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {WebserviceComponent} from './webservice/webservice.component';
+import {AuthGuard} from '../shared/auth/auth-guard.service';
 
-import { Dashboard1Component } from "./dashboard1/dashboard1.component";
 const routes: Routes = [
   {
     path: '',
     children: [
       {
-        path: 'dashboard1',
-        component: Dashboard1Component,
+        path: 'webservice',
+        component: WebserviceComponent,
         data: {
-          title: 'Dashboard 1'
-        }
+          title: 'Webservice'
+        },
       }
     ]
   }
@@ -21,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class wsxRoutingModule { }

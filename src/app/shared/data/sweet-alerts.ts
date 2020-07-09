@@ -40,7 +40,7 @@ export function typeWarning() {
 
 // Error Type Alert
 export function typeError() {
-    swal.fire("Error!", "You clicked the button!", "error");
+
 }
 
 // Custom Icon

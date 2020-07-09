@@ -7,17 +7,13 @@ export const Full_ROUTES: Routes = [
     path: 'dashboard',
     loadChildren: () => import('../../dashboard/dashboard.module').then(m => m.DashboardModule)
   },
-  {
-    path: 'calendar',
-    loadChildren: () => import('../../calendar/calendar.module').then(m => m.CalendarsModule)
+    {
+    path: 'wsxapp',
+    loadChildren: () => import('../../wsxapp/wsx.module').then(m => m.wsxModule)
   },
    {
     path: 'forms',
     loadChildren: () => import('../../forms/forms.module').then(m => m.FormModule)
-  },
-  {
-    path: 'maps',
-    loadChildren: () => import('../../maps/maps.module').then(m => m.MapsModule)
   },
   {
     path: 'tables',
@@ -42,33 +38,5 @@ export const Full_ROUTES: Routes = [
   {
     path: 'cards',
     loadChildren: () => import('../../cards/cards.module').then(m => m.CardsModule)
-  },
-  {
-    path: 'colorpalettes',
-    loadChildren: () => import('../../color-palette/color-palette.module').then(m => m.ColorPaletteModule)
-  },
-  {
-    path: 'chat',
-    loadChildren: () => import('../../chat/chat.module').then(m => m.ChatModule)
-  },
-  {
-    path: 'chat-ngrx',
-    loadChildren: () => import('../../chat-ngrx/chat-ngrx.module').then(m => m.ChatNGRXModule)
-  },
-  {
-    path: 'inbox',
-    loadChildren: () => import('../../inbox/inbox.module').then(m => m.InboxModule)
-  },
-  {
-    path: 'taskboard',
-    loadChildren: () => import('../../taskboard/taskboard.module').then(m => m.TaskboardModule)
-  },
-  {
-    path: 'taskboard-ngrx',
-    loadChildren: () => import('../../taskboard-ngrx/taskboard-ngrx.module').then(m => m.TaskboardNGRXModule)
-  },
-  {
-    path: 'player',
-    loadChildren: () => import('../../player/player.module').then(m => m.PlayerModule)
   }
 ];
