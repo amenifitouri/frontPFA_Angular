@@ -158,6 +158,13 @@
     universal-analytics "^0.4.20"
     uuid "^3.3.2"
 
+"@angular/common@*":
+  version "11.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-11.2.4.tgz#dab49104b8f60df90994bcfb49b75544424b4a1d"
+  integrity sha512-1Zf+ejJcfSFcnAhtyEjuBw7mqeT4wbfMT5xPzpgs2qRXOOi1Ag59NG6QLeNGcy55sjykUMP9xpWXx6dWXdD54g==
+  dependencies:
+    tslib "^2.0.0"
+
 "@angular/common@8.0.0":
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-8.0.0.tgz#700aeda9be8af96692fce0ea6bf6157f7c874c0e"
@@ -189,12 +196,26 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/core@*":
+  version "11.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-11.2.4.tgz#f655f05ebb245ff83c49f563193a8496afc9a36a"
+  integrity sha512-MU2DxGJOMLS6rqrakzEKJ2s+CYamM5ETBInqx4uTBJYsek3byF9gbjM6221lv8tal5dMAibigB0UuhXr23rhcQ==
+  dependencies:
+    tslib "^2.0.0"
+
 "@angular/core@8.0.0":
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-8.0.0.tgz#bf7a582b818e9181d830219907470e2b865ba32f"
   integrity sha512-mrkP1PTzqCmZGLYll+TDyawLXHzi+FcRPqSuRxCmDMthUUE93SLXT2yISDkx9aMPtFKgFr6KfrIkKuCz16BP/g==
   dependencies:
     tslib "^1.9.0"
+
+"@angular/forms@*":
+  version "11.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-11.2.4.tgz#c00467eb3ef4e54723df4d96cebd1dd161843aef"
+  integrity sha512-JVjSSj3lvhT5qevyle2s1rVgs8NGUOMaNO6LDDBFEpak5c4AttZXVos9zXVHg//99fG6AUumewFDgR6ksPuQCQ==
+  dependencies:
+    tslib "^2.0.0"
 
 "@angular/forms@8.0.0":
   version "8.0.0"
@@ -237,6 +258,13 @@
   integrity sha512-DGUTb8qpndE5m716xh00GxuC8o7qamlqbUruGB+SQD6ynU7s5yLGxtKffxqb1BT63+YewpsVxc2Koruvb1qjDw==
   dependencies:
     tslib "^1.9.0"
+
+"@auth0/angular-jwt@^5.0.1":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@auth0/angular-jwt/-/angular-jwt-5.0.2.tgz#0a23f240e8c6ed37c5c7a354ad79a755a217936e"
+  integrity sha512-rSamC9mu+gUxoR86AXcIo+KD7xRIro+/iu1F2Ld85YAZEVKlpB5vYG+g0yGaEOqjtQWP/i0H6fi6XMGPVHSYYQ==
+  dependencies:
+    tslib "^2.0.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4":
   version "7.10.4"
@@ -1388,10 +1416,10 @@ bluebird@^3.3.0, bluebird@^3.4.6, bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
-bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.4.0:
-  version "4.11.9"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
-  integrity sha512-E6QoYqCKZfgatHTdHzs1RRKP7ip4vvm+EyRUeE2RF0NblwVvb0p6jSVeNTOFxPn26QXN2o6SMfNxKp6kU8zQaw==
+bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.11.9:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.12.0.tgz#775b3f278efbb9718eec7361f483fb36fbbfea88"
+  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
 bn.js@^5.1.1:
   version "5.1.2"
@@ -1462,7 +1490,7 @@ braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-brorand@^1.0.1:
+brorand@^1.0.1, brorand@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
@@ -3248,17 +3276,17 @@ electron-to-chromium@^1.3.124, electron-to-chromium@^1.3.488:
   integrity sha512-1FfqjT+IXbs/H9bGJwRIyQQqOXIo7mOVUnv8s7nb2ff01fD0Z8dn1YjKovLDCFe4900Dal2uutR0YzXN5ldqEQ==
 
 elliptic@^6.0.0, elliptic@^6.5.2:
-  version "6.5.3"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
-  integrity sha512-IMqzv5wNQf+E6aHeIqATs0tOLeOTwj1QKbRcS3jBbYkl5oLAserA8yJTT7/VyHUYG91PRmPyeQDObKLPpeS4dw==
+  version "6.5.4"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.4.tgz#da37cebd31e79a1367e941b592ed1fbebd58abbb"
+  integrity sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==
   dependencies:
-    bn.js "^4.4.0"
-    brorand "^1.0.1"
+    bn.js "^4.11.9"
+    brorand "^1.1.0"
     hash.js "^1.0.0"
-    hmac-drbg "^1.0.0"
-    inherits "^2.0.1"
-    minimalistic-assert "^1.0.0"
-    minimalistic-crypto-utils "^1.0.0"
+    hmac-drbg "^1.0.1"
+    inherits "^2.0.4"
+    minimalistic-assert "^1.0.1"
+    minimalistic-crypto-utils "^1.0.1"
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -4374,7 +4402,7 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-hmac-drbg@^1.0.0:
+hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
   integrity sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
@@ -5839,7 +5867,7 @@ minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
   integrity sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==
 
-minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
+minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
@@ -6077,12 +6105,27 @@ ng2-validation@4.2.0:
   dependencies:
     libphonenumber-js "^0.4.5"
 
+ngx-bootstrap@5.6.1:
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-5.6.1.tgz#c37643247441f9d421bca2cd7d7de1d0445e903f"
+  integrity sha512-8fDs3VaaWgKpupakPKS0QaUc+1E/JMBGJDxUUODjyIkLtFr1A8vH4cjXiV3AfrPvhK27GH0oyTPyKWKcCjEtVg==
+
 ngx-chips@2.0.0-beta.0:
   version "2.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/ngx-chips/-/ngx-chips-2.0.0-beta.0.tgz#34ee6552ff2f3fc23d54ecba572a70022ac2e34a"
   integrity sha512-TND8OAaD1FBt5RG0TS8vhDOpVIXakQSTucQKD8GDhaNSz+92ba2WAZA5snzI5exVs52hjfCdUTAjam6d/OO9Ug==
   dependencies:
     ng2-material-dropdown "0.10.1"
+    tslib "^1.9.0"
+
+ngx-datatable-bootstrap4@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/ngx-datatable-bootstrap4/-/ngx-datatable-bootstrap4-0.4.5.tgz#ae126571d56d8a8134a88988c41ffd4005b7c07b"
+  integrity sha512-pTT1gGbTk5me3+Fb70/2PEgFugyymzy0LL+pvYUcbU5/Nny0saaJ8mJtIFl7xV3DToXc1bxGIjZCKoDNiOX7OQ==
+  dependencies:
+    "@angular/common" "*"
+    "@angular/core" "*"
+    "@angular/forms" "*"
     tslib "^1.9.0"
 
 ngx-perfect-scrollbar@7.2.1:
@@ -8710,6 +8753,11 @@ tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
+
+tslib@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
+  integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
 
 tslint@5.16.0:
   version "5.16.0"
