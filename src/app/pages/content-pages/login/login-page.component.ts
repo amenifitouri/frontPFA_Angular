@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
-import {AuthService} from '../../../shared/auth/auth.service';
+import { AuthService } from 'app/service/auth.service';
+import { TokenStorageService } from 'app/service/token-storage.service';
 import {first} from 'rxjs/operators';
 
 @Component({
@@ -11,43 +12,65 @@ import {first} from 'rxjs/operators';
 })
 
 export class LoginPageComponent implements OnInit {
-    constructor(private router: Router,
-                private route: ActivatedRoute,
-                private authService: AuthService,
-                private formBuilder: FormBuilder,) { }
-    ngOnInit(): void {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
+    form: any = {
+        username: null,
+        password: null
+      };
+      showAdminBoard = false;
+      showUserBoard = false;
+      
+      isLoggedIn = false;
+      isLoginFailed = false;
+      errorMessage = '';
+      roles: string[] = [];
+      constructor(private authService: AuthService, private tokenStorage: TokenStorageService ) { }
+      ngOnInit(): void {
+        if (this.tokenStorage.getToken()) {
+          this.isLoggedIn = true;
+          this.roles = this.tokenStorage.getUser().roles;
+          this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+          this.showUserBoard = this.roles.includes('ROLE_USER');
+          console.log(this.tokenStorage.getToken());
+          
+          this.tokenStorage.saveToken(this.tokenStorage.getToken());
+          this.tokenStorage.saveUser(this.tokenStorage.getUser());
+      }
+    }
+
+
+ 
+    onSubmit(f : NgForm): void {
+        console.log("f" , f);
+        const { username, password } = this.form;
+        this.authService.login(username, password).subscribe({
+          next: data => {
+            
+            
+            console.log(data);
+            
+            this.tokenStorage.saveToken(data.accessToken);
+            this.tokenStorage.saveUser(data);
+            this.isLoginFailed = false;
+            this.isLoggedIn = true;
+            this.roles = this.tokenStorage.getUser().roles;
+            console.log("from on submit login component ");
+            
+         
+          },
+          error: err => {
+            this.errorMessage = err.error.message;
+            this.isLoginFailed = true;
+          }
         });
-    }
-    loginForm: FormGroup;
-    password: string;
-    username: string;
+      }
 
-    get f() {
-        return this.loginForm.controls; }
 
-    // On submit button click
-    onSubmit() {
-        if (this.loginForm.invalid) {
-            return;
-        }
-        this.authService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate(['dashboard/dashboard1']);
-                },
-             );
-    }
+
     // On Forgot password link click
     onForgotPassword() {
-        this.router.navigate(['forgotpassword'], { relativeTo: this.route.parent });
     }
     // On registration link click
     onRegister() {
-        this.router.navigate(['register'], { relativeTo: this.route.parent });
     }
 
 
