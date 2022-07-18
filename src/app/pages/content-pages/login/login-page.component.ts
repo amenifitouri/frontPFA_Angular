@@ -25,19 +25,20 @@ export class LoginPageComponent implements OnInit {
       roles: string[] = [];
       constructor(private authService: AuthService,  private _router: Router, private tokenStorage: TokenStorageService ) { }
       ngOnInit(): void {
-        //if (this.tokenStorage.getToken()) {
-          //this.isLoggedIn = true;
-          //this.roles = this.tokenStorage.getUser().roles;
-          //this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-          //this.showUserBoard = this.roles.includes('ROLE_USER');
-          //console.log(this.tokenStorage.getToken());
+        if (this.tokenStorage.getToken()) {
+          this.isLoggedIn = true;
+          this.roles = this.tokenStorage.getUser().roles;
+          this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+          this.showUserBoard = this.roles.includes('ROLE_USER');
+          console.log(this.tokenStorage.getToken());
           
-          //this.tokenStorage.saveToken(this.tokenStorage.getToken());
-          //this.tokenStorage.saveUser(this.tokenStorage.getUser());
-         
-          
-          
-   //   }
+          this.tokenStorage.saveToken(this.tokenStorage.getToken());
+        this.tokenStorage.saveUser(this.tokenStorage.getUser());
+      
+        
+          this._router.navigate['/dashboard/dashboard1']
+        
+        }
     }
 
     onrefresh(){

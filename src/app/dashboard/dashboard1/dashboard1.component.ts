@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
 import { ChartType, ChartEvent } from "ng-chartist";
-
+import * as tableData from '../../shared/data/smart-data-table';
+import { LocalDataSource } from 'ng2-smart-table';
 declare var require: any;
 
 const data: any = require('../../shared/data/chartist.json');
@@ -17,72 +18,81 @@ export interface Chart {
 @Component({
     selector: 'app-dashboard1',
     templateUrl: './dashboard1.component.html',
-    styleUrls: ['./dashboard1.component.scss']
+    styleUrls: ['./dashboard1.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class Dashboard1Component {
-
-    // Line area chart configuration Starts
-    lineArea: Chart = {
-        type: 'Line',
-        data: data['lineAreaDashboard'],
-        options: {
-            low: 0,
-            showArea: true,
-            fullWidth: true,
-            onlyInteger: true,
-            axisY: {
-                low: 0,
-                scaleMinSpace: 50,
-            },
-            axisX: {
-                showGrid: false
-            }
-        },
-        events: {
-            created(data: any): void {
-                var defs = data.svg.elem('defs');
-                defs.elem('linearGradient', {
-                    id: 'gradient',
-                    x1: 0,
-                    y1: 1,
-                    x2: 1,
-                    y2: 0
-                }).elem('stop', {
-                    offset: 0,
-                    'stop-color': 'rgba(0, 201, 255, 1)'
-                }).parent().elem('stop', {
-                    offset: 1,
-                    'stop-color': 'rgba(146, 254, 157, 1)'
-                });
-
-                defs.elem('linearGradient', {
-                    id: 'gradient1',
-                    x1: 0,
-                    y1: 1,
-                    x2: 1,
-                    y2: 0
-                }).elem('stop', {
-                    offset: 0,
-                    'stop-color': 'rgba(132, 60, 247, 1)'
-                }).parent().elem('stop', {
-                    offset: 1,
-                    'stop-color': 'rgba(56, 184, 242, 1)'
-                });
-            },
-
-        },
-    };
-    // Line area chart configuration Ends
-
+    source: LocalDataSource;
+    filterSource: LocalDataSource;
+    alertSource: LocalDataSource;
    
+    
+   
+    constructor() {
+        this.source = new LocalDataSource(tableData.data); // create the source
+        this.filterSource = new LocalDataSource(tableData.filerdata); // create the source
+        this.alertSource = new LocalDataSource(tableData.alertdata); // create the source
+    }
+
+    settings = tableData.settings;
+    filtersettings = tableData.filtersettings;
+    alertsettings = tableData.alertsettings;
+
+
+    // And the listener code which asks the DataSource to filter the data:
+    onSearch(query: string = '') {
+        this.source.setFilter([
+            // fields we want to inclue in the search
+            {
+                field: 'id',
+                search: query,
+            },
+            {
+                field: 'name',
+                search: query,
+            },
+            {
+                field: 'username',
+                search: query,
+            },
+            {
+                field: 'email',
+                search: query,
+            },
+        ], false);
+        // second parameter specifying whether to perform 'AND' or 'OR' search 
+        // (meaning all columns should contain search query or at least one)
+        // 'AND' by default, so changing to 'OR' by setting false here
+    }
+
+    //  For confirm action On Delete
+    onDeleteConfirm(event) {
+        if (window.confirm('Are you sure you want to delete?')) {
+            event.confirm.resolve();
+        } else {
+            event.confirm.reject();
+        }
+    }
+
+    //  For confirm action On Save
+    onSaveConfirm(event) {
+        if (window.confirm('Are you sure you want to save?')) {
+            event.newData['name'] += ' + added in code';
+            event.confirm.resolve(event.newData);
+        } else {
+            event.confirm.reject();
+        }
+    }
+
+    //  For confirm action On Create
+    onCreateConfirm(event) {
+        if (window.confirm('Are you sure you want to create?')) {
+            event.newData['name'] += ' + added in code';
+            event.confirm.resolve(event.newData);
+        } else {
+            event.confirm.reject();
+        }
+    }
+
 }
-
-
-
-
-
-
-    
-
-    
