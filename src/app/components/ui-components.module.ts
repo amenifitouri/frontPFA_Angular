@@ -51,6 +51,7 @@ import { SelectComponent } from './extra/select/select.component';
 import { TablesComponent } from './bootstrap/tables/tables.component';
 import { NgbdSortableHeader } from './bootstrap/tables/sortable.directive';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -104,7 +105,8 @@ import { NgbdSortableHeader } from './bootstrap/tables/sortable.directive';
         SwitchComponent,
         SelectComponent,
         TablesComponent  ,
-        NgbdSortableHeader
+        NgbdSortableHeader,
+        
     ],
     entryComponents: [NgbdModalContent]
 })

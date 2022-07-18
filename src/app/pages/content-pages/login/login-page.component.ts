@@ -35,9 +35,7 @@ export class LoginPageComponent implements OnInit {
           this.tokenStorage.saveToken(this.tokenStorage.getToken());
         this.tokenStorage.saveUser(this.tokenStorage.getUser());
       
-        
-          this._router.navigate['/dashboard/dashboard1']
-        
+       
         }
     }
 
@@ -60,7 +58,14 @@ export class LoginPageComponent implements OnInit {
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getUser().roles;
             console.log("from on submit login component ");
-            
+            if(this.roles[0]=='ROLE_ADMIN'){
+      
+              this._router.navigate(['/dashboard/dashboard1'])}
+        
+              else if (this.roles[0]=='ROLE_USER'){
+                this._router.navigate(['/pages/error'])
+        
+              }
          
           },
           error: err => {

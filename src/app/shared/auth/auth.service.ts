@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {JwtHelperService} from "@auth0/angular-jwt";
-import {User} from '../../wsxapp/Models/user.model';
+
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class AuthService {
   token: string;
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
-  public jwtHelper: JwtHelperService = new JwtHelperService();
+  
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+  
   }
 
   login(username: string, password: string) {
@@ -25,7 +22,7 @@ export class AuthService {
             localStorage.setItem('token', user.id_token);
             localStorage.setItem('currentUser', JSON.stringify({username: username , token: user.id_token}));
 
-            this.currentUserSubject.next(user);
+           
           }
           return user;
         }));
@@ -39,7 +36,7 @@ export class AuthService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
-    this.currentUserSubject.next(null);
+    
   }
 
   public isAuthenticated(): boolean {

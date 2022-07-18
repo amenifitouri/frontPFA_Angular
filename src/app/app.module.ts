@@ -25,6 +25,9 @@ import { DragulaService } from "ng2-dragula";
 import { AuthService } from "./shared/auth/auth.service";
 import { AuthGuard } from "./shared/auth/auth-guard.service";
 import {TabsModule} from 'ngx-bootstrap/tabs';
+import { SalleModule } from './salle/salle.module';
+
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -38,6 +41,8 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [AppComponent, FullLayoutComponent, ContentLayoutComponent],
   imports: [
+      
+    
     BrowserAnimationsModule,
     StoreModule.forRoot({}),
     AppRoutingModule,
@@ -56,7 +61,8 @@ export function createTranslateLoader(http: HttpClient) {
     AgmCoreModule.forRoot({
       apiKey: "YOUR KEY"
     }),
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    SalleModule
   ],
   providers: [
     AuthService,

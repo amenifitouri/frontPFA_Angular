@@ -7,10 +7,7 @@ export const Full_ROUTES: Routes = [
     path: 'dashboard',
     loadChildren: () => import('../../dashboard/dashboard.module').then(m => m.DashboardModule)
   },
-    {
-    path: 'wsxapp',
-    loadChildren: () => import('../../wsxapp/wsx.module').then(m => m.wsxModule)
-  },
+   
    {
     path: 'forms',
     loadChildren: () => import('../../forms/forms.module').then(m => m.FormModule)
@@ -23,10 +20,7 @@ export const Full_ROUTES: Routes = [
     path: 'datatables',
     loadChildren: () => import('../../data-tables/data-tables.module').then(m => m.DataTablesModule)
   },
-  {
-    path: 'uikit',
-    loadChildren: () => import('../../ui-kit/ui-kit.module').then(m => m.UIKitModule)
-  },
+ 
   {
     path: 'components',
     loadChildren: () => import('../../components/ui-components.module').then(m => m.UIComponentsModule)

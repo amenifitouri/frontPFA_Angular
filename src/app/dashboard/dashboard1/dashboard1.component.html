@@ -1,22 +1,139 @@
-<!--Confirm Action Starts-->
- <!--<section id="action">
-	<div class="row text-left">
-	  <div class="col-sm-12">
-		<div class="card">
-		  <div class="card-header">
-			<h4 class="card-title">Confirm Action</h4>
-		  </div>
-		  <div class="card-content">
-			<div class="card-body">
-			  <div class="table-responsive">
-				<ng2-smart-table [settings]="alertsettings" [source]="alertSource" (deleteConfirm)="onDeleteConfirm($event)"
-				  (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-  </section>
-  <!--Confirm Action Ends-->
--->
+
+
+<div  class="btn1">
+
+
+    <a  href="javascript:void(0)"mat-raised-button color="primary" (click)="open(content)" class="btn btn-raised gradient-mint white">Ajouter Salle</a>
+  </div>
+  <table class="table datatable-responsive">
+    
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nom de la salle de réunion </th>
+      
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Pays of pays">
+        <td>{{ Pays.id }}</td>
+        <td>{{ Pays.libelle }}</td>
+        
+        
+        
+        <td class="text-center">
+          <div class="list-icons">
+            <div class="dropdown">
+				
+                
+
+				
+					<a href="javascript:void(0)" (click)=" delete(Pays.id)" (click)="open2(contentt)" class="btn btn-raised gradient-pomegranate white">Déactiver</a>
+					
+				  
+    
+            </div>
+          </div>
+        </td>
+      </tr>
+  
+    </tbody>
+  </table>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New salle</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="card my-5">
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" #libelleForm="ngForm">
+            <div class="form-group">
+              <label for="login">Libelle </label>
+              <input type="text" [(ngModel)]="pay.libelle" 
+              class="form-control" 
+              id="libelle" 
+              name="libelle" 
+              placeholder="Enter  libelle "
+              required>
+          </div>
+         
+          <div class="modal-footer">
+            <a href="javascript:void(0)" class="btn btn-raised gradient-ibiza-sunset"  (click)="onSubmit()" (click)="modal.close('Save click')">Submit</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    </div>
+   
+  </ng-template>
+  
+  <ng-template #contentt let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Bonjour</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p>voulez vous supprimer la salle ?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark"  (click)="c('Save click')"> oui </button>
+    </div>
+  </ng-template>
+  
+//calender
+
+<div class='demo-app'>
+
+  <div class='demo-app-sidebar'>
+    <div class='demo-app-sidebar-section'>
+      <h2>Instructions</h2>
+      <ul>
+        <li>Select dates and you will be prompted to create a new event</li>
+        <li>Drag, drop, and resize events</li>
+        <li>Click an event to delete it</li>
+      </ul>
+    </div>
+    <div class='demo-app-sidebar-section'>
+      <label>
+        <input
+          type='checkbox'
+          [checked]='calendarVisible'
+          (change)='handleCalendarToggle()'
+        />
+        toggle whole calendar
+      </label>
+    </div>
+    <div class='demo-app-sidebar-section'>
+      <label>
+        <input
+          type='checkbox'
+          [checked]='calendarOptions.weekends'
+          (change)='handleWeekendsToggle()'
+        />
+        toggle weekends
+      </label>
+    </div>
+    <div class='demo-app-sidebar-section'>
+      <h2>All Events ({{currentEvents.length}})</h2>
+      <ul>
+        <li *ngFor='let event of currentEvents'>
+          <b>{{event.startStr}}</b>
+          <i>{{event.title}}</i>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class='demo-app-main'>
+    <full-calendar
+      *ngIf='calendarVisible'
+      [options]='calendarOptions'
+    ></full-calendar>
+  </div>
+
+</div>
